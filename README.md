@@ -81,21 +81,21 @@ The `search` command finds emails by semantic meaning:
 
 ```bash
 # Basic search (uses default collection)
-smail search "emails I sent to Apple support team in April"
+smail search "Emails I sent to Apple support team in April"
 
 # Search with specific embedding model (must match indexed model)
-smail search "plump.ai project deadline" --model nomic-embed-text
-smail search "technical discussion around openmail architecture" -m mxbai-embed-large
+smail search "Plump.ai project deadline" --model nomic-embed-text
+smail search "Technical discussion around openmail architecture" -m mxbai-embed-large
 
 # Search with more results, detailed
-smail search "brex transactions" --limit 20 --detailed
+smail search "Brex transactions" --limit 20 --detailed
 
 # Use specific provider/model combination
-smail search "user/pass from slack sent from sre guy" \
+smail search "User/pass from slack sent from sre guy" \
   --provider ollama --model nomic-embed-text
   
 # Short syntax
-smail search "blockchain password" -p ollama -m nomic-embed-text
+smail search "Blockchain password from 2015" -p ollama -m nomic-embed-text
 ```
 
 **Options:**
