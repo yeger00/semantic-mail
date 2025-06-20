@@ -5,7 +5,7 @@ Lightweight CLI agent to semantically **search** and **ask** your emails. Downlo
 ![Demo](assets/demo.gif)
 
 
-At its core by default, Semantic Mail uses Ollama for local embeddings and ChromaDB for vector storage
+By default, Semantic Mail uses [Ollama](https://github.com/ollama/ollama) for local embeddings and ChromaDB for vector storage
 
 ## Install
 
@@ -17,7 +17,7 @@ curl -fsSL https://ollama.ai/install.sh | sh
 ollama serve
 
 # Clone and install
-git clone https://github.com/yourusername/semantic-mail.git
+git clone https://github.com/yahorbarkouski/semantic-mail.git
 cd semantic-mail
 uv pip install -e .
 ```
