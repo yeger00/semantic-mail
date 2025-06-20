@@ -109,23 +109,29 @@ smail search "blockchain password" -p ollama -m nomic-embed-text
 The `ask` command uses AI to answer questions based on your email content:
 
 ```bash
-smail ask "What are the budget items discussed this month?"
+# Find specific information across multiple emails
+smail ask "What was the total amount I spent on Amazon last month?"
+smail ask "Summarize all emails about the production outage last week"
+smail ask "What's the WiFi password the Airbnb host sent me?"
+
+# Use specific LLM model for better answers
+smail ask "Create a timeline of the hiring process for the senior engineer position" --model deepseek-r1:8b
 
 # Use specific LLM model for answers
 smail ask "Summarize the project status updates" --model deepseek-r1:8b
 
 # Use custom models for both search and answers
-smail ask "What were the action items?" \
+smail ask "Find the AWS credentials that DevOps sent last month" \
   --embedding-provider ollama --embedding-model nomic-embed-text \
   --provider ollama --model deepseek-r1:8b
 
 # Short syntax
-smail ask "What are the key decisions?" \
+smail ask "What's my United frequent flyer number?" \
   -ep ollama -em nomic-embed-text \
   -p ollama -m deepseek-r1:8b
 
 # Search more emails and get longer answers
-smail ask "Summarize all meeting outcomes" \
+smail ask "Based on the email threads, what are the main blockers for the Q4 launch?" \
   --search-limit 10 --max-tokens 1000
 ```
 
