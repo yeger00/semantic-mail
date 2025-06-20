@@ -33,3 +33,5 @@ token.json
 .vscode/
 *.swp
 *.swo
+
+assets/
