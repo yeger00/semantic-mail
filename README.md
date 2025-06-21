@@ -19,6 +19,12 @@ ollama serve
 # Clone and install
 git clone https://github.com/yahorbarkouski/semantic-mail.git
 cd semantic-mail
+
+# Create and activate virtual environment
+uv venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# Install the package
 uv pip install -e .
 ```
 
