@@ -1,7 +1,10 @@
 from abc import ABC, abstractmethod
 from typing import List, Optional, Tuple
-from ..models import Email
 
+from src.embedding.simplify_html import simplify_html
+from ..models import Email
+from rich.console import Console
+console = Console()
 
 class BaseEmbedder(ABC):
     @abstractmethod
@@ -28,11 +31,23 @@ class BaseEmbedder(ABC):
         """Generate embeddings for multiple texts"""
         pass
     
-    @abstractmethod
     def embed_emails(self, emails: List[Email]) -> List[Tuple[Email, Optional[List[float]]]]:
         """Generate embeddings for a list of emails"""
-        pass
-    
+        console.print(
+            f"[bold blue]Generating embeddings for {len(emails)} emails...[/bold blue]"
+        )
+        texts = [simplify_html(email.content_for_embedding) for email in emails]
+        embeddings = self.generate_embeddings_batch(texts)
+
+        results = list(zip(emails, embeddings))
+
+        successful = sum(1 for _, emb in results if emb is not None)
+        console.print(
+            f"[green]Successfully generated {successful}/{len(emails)} embeddings[/green]"
+        )
+
+        return results
+
     @abstractmethod
     def test_connection(self) -> bool:
         """Test if the embedder is properly configured and can connect"""

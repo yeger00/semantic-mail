@@ -78,19 +78,6 @@ class OpenAIEmbedder(BaseEmbedder):
         
         return embeddings
     
-    def embed_emails(self, emails: List[Email]) -> List[Tuple[Email, Optional[List[float]]]]:
-        console.print(f"[bold blue]Generating embeddings for {len(emails)} emails using OpenAI {self.model_name}...[/bold blue]")
-        
-        texts = [email.content_for_embedding for email in emails]
-        embeddings = self.generate_embeddings_batch(texts)
-        
-        results = list(zip(emails, embeddings))
-        
-        successful = sum(1 for _, emb in results if emb is not None)
-        console.print(f"[green]Successfully generated {successful}/{len(emails)} embeddings[/green]")
-        
-        return results
-    
     def test_connection(self) -> bool:
         try:
             console.print(f"[green]Testing OpenAI API connection...[/green]")

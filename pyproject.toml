@@ -5,6 +5,7 @@ description = "Local semantic search for Gmail using Ollama embeddings"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "beautifulsoup4>=4.13.5",
     "chromadb>=1.0.13",
     "click>=8.2.1",
     "google-api-python-client>=2.173.0",
